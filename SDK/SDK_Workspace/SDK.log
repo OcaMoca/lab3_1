@@ -1,0 +1,83 @@
+19:09:19.713 INFO  - Processing command line option -hwspec D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+19:12:55.051 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+19:14:12.208 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+19:14:45.498 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+19:17:22.887 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+19:18:25.163 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+19:19:01.122 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+09:10:00.061 INFO  - Processing command line option -hwspec D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+09:11:38.974 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+09:13:09.034 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+09:15:11.760 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+09:22:26.675 ERROR - FPGA Configuration failed.Connection to Board Failed
+
+
+    Failed to Open JTAG Cable
+    Cable target is not connected to the host
+ 
+09:24:11.013 INFO  - FPGA configured successfully with bitstream "D:/ra164-2016/lab3_1/SDK/SDK_Workspace/lab3_1_hw_platform/download.bit" 
+09:28:30.982 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+09:29:38.110 INFO  - microblaze_0 Processor is in use. Please stop existing Run or Debug sessions before launching. 
+09:31:58.442 ERROR - Unable to disconnect from existing targets java.lang.NullPointerException
+	at com.xilinx.sdk.targetmanager.internal.json.XMDJSONProcess.issueCommand(Unknown Source)
+	at com.xilinx.sdk.targetmanager.internal.TM.disconnectTarget(Unknown Source)
+
+09:32:04.461 ERROR - Unexpected error while terminating XMD: {} org.eclipse.debug.core.DebugException: Terminate failed
+	at org.eclipse.debug.core.model.RuntimeProcess.terminate(RuntimeProcess.java:224)
+	at com.xilinx.sdk.targetmanager.internal.json.XMDJSONProcess.terminate(Unknown Source)
+
+10:08:05.502 INFO  - Processing command line option -hwspec D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+10:08:06.282 INFO  - The hardware specification for project 'lab3_1_hw_platform' is different from D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+10:08:06.308 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml into \lab3_1_hw_platform\system.xml. 
+10:08:06.311 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.bit into \lab3_1_hw_platform\system.bit. 
+10:08:06.313 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system_bd.bmm into \lab3_1_hw_platform\system_bd.bmm. 
+10:08:06.551 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+10:08:07.756 INFO  - Updating MSS for Board Support Package Project: hello_world_bsp.
+		 The following driver assignments were removed:
+			Peripheral Instance: leds, driver: gpio_v3_01_a.
+		 The following new driver assignments were made:
+			Peripheral Instance: my_peripheral_0, driver: generic_v1_00_a.
+ 
+10:08:08.597 INFO  - Updating hardware inferred compiler options for hello_world. 
+10:08:08.610 INFO  - Clearing existing target manager status. 
+10:23:31.496 INFO  - FPGA configured successfully with bitstream "D:/ra164-2016/lab3_1/SDK/SDK_Workspace/lab3_1_hw_platform/download.bit" 
