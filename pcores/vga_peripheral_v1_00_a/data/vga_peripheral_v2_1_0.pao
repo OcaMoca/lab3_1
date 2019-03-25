@@ -1,0 +1,17 @@
+##############################################################################
+## Filename:          D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/data/vga_peripheral_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Mon Mar 25 09:25:12 2019 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+lib vga_peripheral_v1_00_a user_logic vhdl
+lib vga_peripheral_v1_00_a vga_peripheral vhdl
+lib vga_peripheral_v1_00_a char_rom vhdl
+lib vga_peripheral_v1_00_a graphics_mem vhdl
+lib vga_peripheral_v1_00_a text_mem vhdl
+lib vga_peripheral_v1_00_a top vhdl
+lib vga_peripheral_v1_00_a vga vhdl
+lib vga_peripheral_v1_00_a vga_sync vhdl
+lib vga_peripheral_v1_00_a vga_top vhdl

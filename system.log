@@ -2646,3 +2646,34 @@ Xilinx Software Development Kit
 Xilinx EDK 14.6 Build EDK_P.68d
 Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 Done!
+Writing filter settings....
+Done writing filter settings to:
+	D:\ra164-2016\lab3_1\etc\system.filters
+Done writing Tab View settings to:
+	D:\ra164-2016\lab3_1\etc\system.gui
+Xilinx Platform Studio (XPS)
+Xilinx EDK 14.6 Build EDK_P.68d
+Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
+
+Writing filter settings....
+Done writing filter settings to:
+	D:\ra164-2016\lab3_1\etc\system.filters
+Done writing Tab View settings to:
+	D:\ra164-2016\lab3_1\etc\system.gui
+Overriding Xilinx file <TextEditor.cfg> with local file <C:/Xilinx/14.6/ISE_DS/EDK/data/TextEditor.cfg>
+Assigned Driver vga_peripheral 1.00.a for instance vga_peripheral_0
+vga_peripheral_0 has been added to the project
+WARNING:EDK:2137 - Peripheral vga_peripheral_0 is not accessible from any processor in the system. Check Bus Interface connections and address parameters. 
+Address Map for Processor microblaze_0
+  (0000000000-0x00007fff) microblaze_0_d_bram_ctrl	microblaze_0_dlmb
+  (0000000000-0x00007fff) microblaze_0_i_bram_ctrl	microblaze_0_ilmb
+  (0x40020000-0x4002ffff) DIP_Switches	axi4lite_0
+  (0x40600000-0x4060ffff) RS232	axi4lite_0
+  (0x41400000-0x4140ffff) debug_module	axi4lite_0
+  (0x7de00000-0x7de0ffff) my_peripheral_0	axi4lite_0
+  (0x7fc00000-0x7fc0ffff) vga_peripheral_0	axi4lite_0
+INFO:EDK - Use DIP_Switches as reference
+INFO:EDK - Connect bus interface S_AXI to axi4lite_0
+INFO:EDK - Connect clock port S_AXI_ACLK to clk_100_0000MHz
+INFO:EDK - External IO port grouping doneINFO:EDK - Generate address successfully
+INFO:EDK - Successfully finished auto bus connection for IP instance: vga_peripheral_0
