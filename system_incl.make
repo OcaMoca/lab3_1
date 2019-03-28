@@ -123,7 +123,15 @@ C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/h
 C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd \
 C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd \
 pcores/my_peripheral_v1_00_a/hdl/vhdl/user_logic.vhd \
-pcores/my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd
+pcores/my_peripheral_v1_00_a/hdl/vhdl/my_peripheral.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/user_logic.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_peripheral.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/char_rom.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/graphics_mem.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/text_mem.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_sync.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd
 
 WRAPPER_NGC_FILES = implementation/system_proc_sys_reset_0_wrapper.ngc \
 implementation/system_microblaze_0_ilmb_wrapper.ngc \
@@ -137,7 +145,8 @@ implementation/system_clock_generator_0_wrapper.ngc \
 implementation/system_axi4lite_0_wrapper.ngc \
 implementation/system_rs232_wrapper.ngc \
 implementation/system_dip_switches_wrapper.ngc \
-implementation/system_my_peripheral_0_wrapper.ngc
+implementation/system_my_peripheral_0_wrapper.ngc \
+implementation/system_vga_peripheral_0_wrapper.ngc
 
 POSTSYN_NETLIST = implementation/$(SYSTEM).ngc
 

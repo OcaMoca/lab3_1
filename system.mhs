@@ -18,6 +18,19 @@
  PORT DIP_Switches_TRI_I = DIP_Switches_TRI_I, DIR = I, VEC = [0:7]
  PORT CLK_P = CLK, DIR = I, DIFFERENTIAL_POLARITY = P, SIGIS = CLK, CLK_FREQ = 50000000
  PORT CLK_N = CLK, DIR = I, DIFFERENTIAL_POLARITY = N, SIGIS = CLK, CLK_FREQ = 50000000
+ PORT vga_peripheral_0_clk_i_pin = vga_peripheral_0_clk_i, DIR = I, SIGIS = CLK
+ PORT vga_peripheral_0_reset_n_i_pin = vga_peripheral_0_reset_n_i, DIR = I, SIGIS = RST
+ PORT vga_peripheral_0_direct_mode_i_pin = vga_peripheral_0_direct_mode_i, DIR = I
+ PORT vga_peripheral_0_display_mode_i_pin = vga_peripheral_0_display_mode_i, DIR = I, VEC = [1:0]
+ PORT vga_peripheral_0_vga_hsync_o_pin = vga_peripheral_0_vga_hsync_o, DIR = O
+ PORT vga_peripheral_0_vga_vsync_o_pin = vga_peripheral_0_vga_vsync_o, DIR = O
+ PORT vga_peripheral_0_blank_o_pin = vga_peripheral_0_blank_o, DIR = O
+ PORT vga_peripheral_0_pix_clock_o_pin = vga_peripheral_0_pix_clock_o, DIR = O
+ PORT vga_peripheral_0_psave_o_pin = vga_peripheral_0_psave_o, DIR = O
+ PORT vga_peripheral_0_sync_o_pin = vga_peripheral_0_sync_o, DIR = O
+ PORT vga_peripheral_0_red_o_pin = vga_peripheral_0_red_o, DIR = O, VEC = [7:0]
+ PORT vga_peripheral_0_green_o_pin = vga_peripheral_0_green_o, DIR = O, VEC = [7:0]
+ PORT vga_peripheral_0_blue_o_pin = vga_peripheral_0_blue_o, DIR = O, VEC = [7:0]
 
 
 BEGIN proc_sys_reset
@@ -176,5 +189,18 @@ BEGIN vga_peripheral
  PARAMETER C_HIGHADDR = 0x7fc0ffff
  BUS_INTERFACE S_AXI = axi4lite_0
  PORT S_AXI_ACLK = clk_100_0000MHz
+ PORT clk_i = vga_peripheral_0_clk_i
+ PORT reset_n_i = vga_peripheral_0_reset_n_i
+ PORT direct_mode_i = vga_peripheral_0_direct_mode_i
+ PORT display_mode_i = vga_peripheral_0_display_mode_i
+ PORT vga_hsync_o = vga_peripheral_0_vga_hsync_o
+ PORT vga_vsync_o = vga_peripheral_0_vga_vsync_o
+ PORT blank_o = vga_peripheral_0_blank_o
+ PORT pix_clock_o = vga_peripheral_0_pix_clock_o
+ PORT psave_o = vga_peripheral_0_psave_o
+ PORT sync_o = vga_peripheral_0_sync_o
+ PORT red_o = vga_peripheral_0_red_o
+ PORT green_o = vga_peripheral_0_green_o
+ PORT blue_o = vga_peripheral_0_blue_o
 END
 

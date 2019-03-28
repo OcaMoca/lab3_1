@@ -21,8 +21,70 @@
 
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="vga_peripheral.xise"/>
 
-  <files xmlns="http://www.xilinx.com/XMLSchema"/>
+  <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="vga_peripheral.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="vga_peripheral.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="vga_peripheral.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="vga_peripheral.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="vga_peripheral.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="vga_peripheral.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="vga_peripheral.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="vga_peripheral.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="vga_peripheral_envsettings.html"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="vga_peripheral_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="vga_peripheral_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
+  </files>
 
-  <transforms xmlns="http://www.xilinx.com/XMLSchema"/>
+  <transforms xmlns="http://www.xilinx.com/XMLSchema">
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1553763031">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="738767391905043837" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="3427124699120659886" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-6483896701801923713" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015859452503" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763032" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="-4004752375424426312" xil_pn:start_ts="1553763032">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1553763494" xil_pn:in_ck="-8075251677294205209" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="318598487757468605" xil_pn:start_ts="1553763483">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
+      <outfile xil_pn:name="vga_peripheral.lso"/>
+      <outfile xil_pn:name="vga_peripheral.ngc"/>
+      <outfile xil_pn:name="vga_peripheral.ngr"/>
+      <outfile xil_pn:name="vga_peripheral.prj"/>
+      <outfile xil_pn:name="vga_peripheral.stx"/>
+      <outfile xil_pn:name="vga_peripheral.syr"/>
+      <outfile xil_pn:name="vga_peripheral.xst"/>
+      <outfile xil_pn:name="vga_peripheral_xst.xrpt"/>
+      <outfile xil_pn:name="webtalk_pn.xml"/>
+      <outfile xil_pn:name="xst"/>
+    </transform>
+  </transforms>
 
 </generated_project>

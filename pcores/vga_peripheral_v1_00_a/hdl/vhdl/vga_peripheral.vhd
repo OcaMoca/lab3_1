@@ -195,29 +195,6 @@ end entity vga_peripheral;
 
 architecture IMP of vga_peripheral is
 
- component top is
-  generic (
-    RES_TYPE             : natural := 1;
-    TEXT_MEM_DATA_WIDTH  : natural := 6;
-    GRAPH_MEM_DATA_WIDTH : natural := 32
-    );
-  port (
-    clk_i          : in  std_logic;
-    reset_n_i      : in  std_logic;
-	 direct_mode_i  : in  std_logic;
-	 display_mode_i : in  std_logic_vector(1 downto 0);
-    -- vga
-    vga_hsync_o    : out std_logic;
-    vga_vsync_o    : out std_logic;
-    blank_o        : out std_logic;
-    pix_clock_o    : out std_logic;
-    psave_o        : out std_logic;
-    sync_o         : out std_logic;
-    red_o          : out std_logic_vector(7 downto 0);
-    green_o        : out std_logic_vector(7 downto 0);
-    blue_o         : out std_logic_vector(7 downto 0)
-   );
-   end component;
 
   constant USER_SLV_DWIDTH                : integer              := C_S_AXI_DATA_WIDTH;
 
@@ -272,30 +249,9 @@ architecture IMP of vga_peripheral is
   signal user_IP2Bus_RdAck              : std_logic;
   signal user_IP2Bus_WrAck              : std_logic;
   signal user_IP2Bus_Error              : std_logic;
+  
 
 begin
-
-top_i : top 
-  generic map(
-    RES_TYPE              => RES_TYPE,
-    TEXT_MEM_DATA_WIDTH   => TEXT_MEM_DATA_WIDTH,
-    GRAPH_MEM_DATA_WIDTH  => GRAPH_MEM_DATA_WIDTH
-    )
-  port map(
-    clk_i          => clk_i,
-    reset_n_i      => reset_n_i,
-	 direct_mode_i  => direct_mode_i,
-	 display_mode_i => display_mode_i,
-    -- vga
-    vga_hsync_o     => vga_hsync_o,
-    vga_vsync_o     => vga_vsync_o,
-    pix_clock_o     => pix_clock_o,
-    psave_o         => psave_o,
-    sync_o          => sync_o,
-    red_o           => red_o,
-    green_o         => green_o,
-    blue_o          => blue_o
-   );
 
 
   ------------------------------------------
@@ -366,6 +322,20 @@ top_i : top
     (
       -- MAP USER PORTS BELOW THIS LINE ------------------
       --USER ports mapped here
+		clk_i          => clk_i,
+		reset_n_i      => reset_n_i,
+		direct_mode_i  => direct_mode_i,
+		display_mode_i => display_mode_i,
+		 -- vga
+		vga_hsync_o    => vga_hsync_o,
+		vga_vsync_o    => vga_vsync_o,
+		blank_o        => blank_o,
+		pix_clock_o    => pix_clock_o,
+		psave_o        => psave_o,
+		sync_o         => sync_o,
+		red_o          => red_o,
+		green_o        => green_o,
+		blue_o         => blue_o,		
       -- MAP USER PORTS ABOVE THIS LINE ------------------
 
       Bus2IP_Clk                     => ipif_Bus2IP_Clk,

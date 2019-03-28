@@ -27,6 +27,8 @@
 
   <RENDERIMG RASNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\my_peripheral_0.jpg" SVGNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\my_peripheral_0.svg" TMPSVGFN="D:\ra164-2016\lab3_1\__xps\.dswkshop\my_peripheral_0.svg"/>
 
+  <RENDERIMG RASNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\vga_peripheral_0.jpg" SVGNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\vga_peripheral_0.svg" TMPSVGFN="D:\ra164-2016\lab3_1\__xps\.dswkshop\vga_peripheral_0.svg"/>
+
   <RENDERIMG RASNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\system_blkd.jpg" SVGNAME="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\imgs\system_blkd.svg" TMPSVGFN="D:\ra164-2016\lab3_1\__xps\.dswkshop\system_blkd.svg"/>
 
 </RENDERBATCH>

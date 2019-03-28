@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.xst" -ofn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.syr" 
+xst -intstyle ise -ifn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.xst" -ofn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.syr" 
+xst -intstyle ise -ifn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.xst" -ofn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.syr" 
+xst -intstyle ise -ifn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.xst" -ofn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.syr" 
+xst -intstyle ise -ifn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.xst" -ofn "D:/ra164-2016/lab3_1/pcores/vga_peripheral_v1_00_a/devl/projnav/vga_peripheral.syr" 

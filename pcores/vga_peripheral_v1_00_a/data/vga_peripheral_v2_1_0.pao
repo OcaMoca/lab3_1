@@ -11,7 +11,11 @@ lib vga_peripheral_v1_00_a vga_peripheral vhdl
 lib vga_peripheral_v1_00_a char_rom vhdl
 lib vga_peripheral_v1_00_a graphics_mem vhdl
 lib vga_peripheral_v1_00_a text_mem vhdl
-lib vga_peripheral_v1_00_a top vhdl
 lib vga_peripheral_v1_00_a vga vhdl
 lib vga_peripheral_v1_00_a vga_sync vhdl
 lib vga_peripheral_v1_00_a vga_top vhdl
+lib vga_peripheral_v1_00_a dcm25MHz vhdl
+lib vga_peripheral_v1_00_a dcm50MHz vhdl
+lib vga_peripheral_v1_00_a dcm75MHz vhdl
+lib vga_peripheral_v1_00_a dcm108MHz vhdl
+

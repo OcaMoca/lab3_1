@@ -45,6 +45,10 @@ INFO:EDK:4130 - IPNAME: axi_interconnect, INSTANCE:axi4lite_0 - tcl is
    06_a\data\axi_interconnect_v2_1_0.mpd line 81 
 
 Computing clock values...
+INFO:EDK:1432 - Frequency for Top-Level Input Clock 'vga_peripheral_0_clk_i_pin'
+   is not specified. Clock DRCs will not be performed for IPs connected to that
+   clock port, unless they are connected through the clock generator IP. 
+
 INFO:EDK:740 - Cannot determine the input clock associated with port :
    microblaze_0_i_bram_ctrl:BRAM_Clk_A. Clock DRCs will not be performed on this
    core and cores connected to it. 
@@ -62,6 +66,7 @@ Address Map for Processor microblaze_0
   (0x40600000-0x4060ffff) RS232	axi4lite_0
   (0x41400000-0x4140ffff) debug_module	axi4lite_0
   (0x7de00000-0x7de0ffff) my_peripheral_0	axi4lite_0
+  (0x7fc00000-0x7fc0ffff) vga_peripheral_0	axi4lite_0
 INFO:EDK:4130 - IPNAME: lmb_v10, INSTANCE:microblaze_0_ilmb - tool is overriding
    PARAMETER C_LMB_NUM_SLAVES value to 1 -
    C:\Xilinx\14.6\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\lmb_v10_v2_00_b\data
@@ -80,7 +85,7 @@ Checking platform address map ...
 Checking platform configuration ...
 IPNAME: lmb_v10, INSTANCE: microblaze_0_ilmb - 1 master(s) : 1 slave(s) 
 IPNAME: lmb_v10, INSTANCE: microblaze_0_dlmb - 1 master(s) : 1 slave(s) 
-IPNAME: axi_interconnect, INSTANCE: axi4lite_0 - 1 master(s) : 4 slave(s) 
+IPNAME: axi_interconnect, INSTANCE: axi4lite_0 - 1 master(s) : 5 slave(s) 
 
 Checking port drivers...
 
@@ -164,32 +169,12 @@ Creating hardware output directories ...
 Managing hardware (BBD-specified) netlist files ...
 
 Managing cache ...
-IPNAME:proc_sys_reset INSTANCE:proc_sys_reset_0 -
-D:\ra164-2016\lab3_1\system.mhs line 23 - Copying cache implementation netlist
-IPNAME:lmb_v10 INSTANCE:microblaze_0_ilmb - D:\ra164-2016\lab3_1\system.mhs line
-36 - Copying cache implementation netlist
-IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_i_bram_ctrl -
-D:\ra164-2016\lab3_1\system.mhs line 43 - Copying cache implementation netlist
-IPNAME:lmb_v10 INSTANCE:microblaze_0_dlmb - D:\ra164-2016\lab3_1\system.mhs line
-52 - Copying cache implementation netlist
-IPNAME:lmb_bram_if_cntlr INSTANCE:microblaze_0_d_bram_ctrl -
-D:\ra164-2016\lab3_1\system.mhs line 59 - Copying cache implementation netlist
-IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-D:\ra164-2016\lab3_1\system.mhs line 68 - Copying cache implementation netlist
-IPNAME:microblaze INSTANCE:microblaze_0 - D:\ra164-2016\lab3_1\system.mhs line
-75 - Copying cache implementation netlist
-IPNAME:mdm INSTANCE:debug_module - D:\ra164-2016\lab3_1\system.mhs line 98 -
-Copying cache implementation netlist
-IPNAME:axi_uartlite INSTANCE:rs232 - D:\ra164-2016\lab3_1\system.mhs line 132 -
-Copying cache implementation netlist
-IPNAME:axi_gpio INSTANCE:dip_switches - D:\ra164-2016\lab3_1\system.mhs line 147
-- Copying cache implementation netlist
 
 Elaborating instances ...
 IPNAME:bram_block INSTANCE:microblaze_0_bram_block -
-D:\ra164-2016\lab3_1\system.mhs line 68 - elaborating IP
+D:\ra164-2016\lab3_1\system.mhs line 81 - elaborating IP
 IPNAME:clock_generator INSTANCE:clock_generator_0 -
-D:\ra164-2016\lab3_1\system.mhs line 111 - elaborating IP
+D:\ra164-2016\lab3_1\system.mhs line 124 - elaborating IP
 ClkGen elaborate status: PASSED
 ----------------------------------------
 ----------------------------------------
@@ -213,22 +198,50 @@ Running XST synthesis ...
 INFO:EDK:4211 - The following instances are synthesized with XST. The MPD option
    IMP_NETLIST=TRUE indicates that a NGC file is to be produced using XST
    synthesis. IMP_NETLIST=FALSE (default) instances are not synthesized. 
-INSTANCE:clock_generator_0 - D:\ra164-2016\lab3_1\system.mhs line 111 - Running
+INSTANCE:proc_sys_reset_0 - D:\ra164-2016\lab3_1\system.mhs line 36 - Running
 XST synthesis
-INSTANCE:axi4lite_0 - D:\ra164-2016\lab3_1\system.mhs line 124 - Running XST
+INSTANCE:microblaze_0_ilmb - D:\ra164-2016\lab3_1\system.mhs line 49 - Running
+XST synthesis
+INSTANCE:microblaze_0_i_bram_ctrl - D:\ra164-2016\lab3_1\system.mhs line 56 -
+Running XST synthesis
+INSTANCE:microblaze_0_dlmb - D:\ra164-2016\lab3_1\system.mhs line 65 - Running
+XST synthesis
+INSTANCE:microblaze_0_d_bram_ctrl - D:\ra164-2016\lab3_1\system.mhs line 72 -
+Running XST synthesis
+INSTANCE:microblaze_0_bram_block - D:\ra164-2016\lab3_1\system.mhs line 81 -
+Running XST synthesis
+INSTANCE:microblaze_0 - D:\ra164-2016\lab3_1\system.mhs line 88 - Running XST
 synthesis
-INSTANCE:my_peripheral_0 - D:\ra164-2016\lab3_1\system.mhs line 161 - Running
+INSTANCE:debug_module - D:\ra164-2016\lab3_1\system.mhs line 111 - Running XST
+synthesis
+INSTANCE:clock_generator_0 - D:\ra164-2016\lab3_1\system.mhs line 124 - Running
+XST synthesis
+INSTANCE:axi4lite_0 - D:\ra164-2016\lab3_1\system.mhs line 137 - Running XST
+synthesis
+INSTANCE:rs232 - D:\ra164-2016\lab3_1\system.mhs line 145 - Running XST
+synthesis
+INSTANCE:dip_switches - D:\ra164-2016\lab3_1\system.mhs line 160 - Running XST
+synthesis
+INSTANCE:my_peripheral_0 - D:\ra164-2016\lab3_1\system.mhs line 174 - Running
+XST synthesis
+INSTANCE:vga_peripheral_0 - D:\ra164-2016\lab3_1\system.mhs line 185 - Running
 XST synthesis
 
 Running NGCBUILD ...
+IPNAME:system_microblaze_0_ilmb_wrapper INSTANCE:microblaze_0_ilmb -
+D:\ra164-2016\lab3_1\system.mhs line 49 - Running NGCBUILD
+IPNAME:system_microblaze_0_dlmb_wrapper INSTANCE:microblaze_0_dlmb -
+D:\ra164-2016\lab3_1\system.mhs line 65 - Running NGCBUILD
+IPNAME:system_microblaze_0_wrapper INSTANCE:microblaze_0 -
+D:\ra164-2016\lab3_1\system.mhs line 88 - Running NGCBUILD
 IPNAME:system_clock_generator_0_wrapper INSTANCE:clock_generator_0 -
-D:\ra164-2016\lab3_1\system.mhs line 111 - Running NGCBUILD
-IPNAME:system_axi4lite_0_wrapper INSTANCE:axi4lite_0 -
 D:\ra164-2016\lab3_1\system.mhs line 124 - Running NGCBUILD
+IPNAME:system_axi4lite_0_wrapper INSTANCE:axi4lite_0 -
+D:\ra164-2016\lab3_1\system.mhs line 137 - Running NGCBUILD
 INFO:EDK:3509 - NCF files should not be modified as they will be regenerated.
    If any constraint needs to be overridden, this should be done by modifying
    the data/system.ucf file.
 
 Rebuilding cache ...
 
-Total run time: 33.00 seconds
+Total run time: 123.00 seconds
