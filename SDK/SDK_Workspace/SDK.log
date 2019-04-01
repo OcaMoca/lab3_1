@@ -86,3 +86,23 @@
 	at com.xilinx.sdk.targetmanager.internal.TM.disconnectTarget(Unknown Source)
 
 10:35:47.935 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+09:36:57.878 INFO  - Processing command line option -hwspec D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+09:36:59.060 INFO  - The hardware specification for project 'lab3_1_hw_platform' is different from D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+09:36:59.074 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml into \lab3_1_hw_platform\system.xml. 
+09:36:59.078 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.bit into \lab3_1_hw_platform\system.bit. 
+09:36:59.079 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system_bd.bmm into \lab3_1_hw_platform\system_bd.bmm. 
+09:36:59.760 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+09:37:00.867 INFO  - Updating MSS for Board Support Package Project: hello_world_bsp.
+		 The following new driver assignments were made:
+			Peripheral Instance: vga_peripheral_0, driver: generic_v1_00_a.
+ 
+09:37:01.780 INFO  - Updating hardware inferred compiler options for hello_world. 
+09:37:01.794 INFO  - Clearing existing target manager status. 
+09:38:01.801 INFO  - FPGA configured successfully with bitstream "D:/ra164-2016/lab3_1/SDK/SDK_Workspace/lab3_1_hw_platform/download.bit" 
+09:39:49.082 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+09:48:50.409 INFO  - Processing command line option -hwspec D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.xml. 
+09:48:55.523 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+09:48:59.105 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.bit into \lab3_1_hw_platform\system.bit. 
+09:48:59.107 INFO  - Copied contents of D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system_bd.bmm into \lab3_1_hw_platform\system_bd.bmm. 
+09:49:14.946 INFO  - FPGA configured successfully with bitstream "D:/ra164-2016/lab3_1/SDK/SDK_Workspace/lab3_1_hw_platform/download.bit" 
+10:33:42.196 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  

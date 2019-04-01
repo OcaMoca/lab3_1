@@ -127,4 +127,8 @@ vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/h
 vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/vga.vhd
 vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/vga_sync.vhd
 vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd
+vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/dcm25MHz.vhd
+vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/dcm50MHz.vhd
+vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/dcm75MHz.vhd
+vhdl vga_peripheral_v1_00_a D:\ra164-2016\lab3_1\pcores\vga_peripheral_v1_00_a/hdl/vhdl/dcm108MHz.vhd
 vhdl work ../hdl/system_vga_peripheral_0_wrapper.vhd

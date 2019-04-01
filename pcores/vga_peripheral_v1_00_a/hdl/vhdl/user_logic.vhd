@@ -53,6 +53,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_misc.all;
 
 library proc_common_v3_00_a;
 use proc_common_v3_00_a.proc_common_pkg.all;
@@ -94,7 +96,9 @@ entity user_logic is
     -- DO NOT EDIT BELOW THIS LINE ---------------------
     -- Bus protocol parameters, do not add to or delete
     C_NUM_REG                      : integer              := 1;
-    C_SLV_DWIDTH                   : integer              := 32
+    C_SLV_DWIDTH                   : integer              := 32;
+	 C_S_AXI_ADDR_WIDTH    : integer                   := 32
+
     -- DO NOT EDIT ABOVE THIS LINE ---------------------
   );
   port
@@ -115,6 +119,11 @@ entity user_logic is
     red_o          : out std_logic_vector(7 downto 0);
     green_o        : out std_logic_vector(7 downto 0);
     blue_o         : out std_logic_vector(7 downto 0);
+	 
+	 Bus2IP_Addr           : in std_logic_vector
+                              ((C_S_AXI_ADDR_WIDTH-1) downto 0);
+    Bus2IP_RNW            : in std_logic;
+	 Bus2IP_CS             : in std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -277,6 +286,12 @@ architecture IMP of user_logic is
   signal sTC                 :std_logic;
   signal offset              :std_logic_vector(MEM_ADDR_WIDTH-1 downto 0);
   signal move_cnt            :std_logic_vector(4 downto 0);
+  
+  
+  signal unit_id             :std_logic_vector(1 downto 0);
+  signal unit_addr           :std_logic_vector(21 downto 0);
+  signal global_we           :std_logic;
+  
   --USER logic implementation added here 
   component top is
   generic (
@@ -406,180 +421,188 @@ begin
   --dir_green
   --dir_blue
   
- 
-	rgb_s <= x"ffffff" when (dir_pixel_row < 480 and dir_pixel_column <= 79) else
-				x"00FFFF" when (dir_pixel_row < 480 and dir_pixel_column > 80 and dir_pixel_column <= 160) else
-				x"FFFF00" when (dir_pixel_row < 480 and dir_pixel_column > 161 and dir_pixel_column <= 240) else
-				x"00FF00" when (dir_pixel_row < 480 and dir_pixel_column > 241 and dir_pixel_column <= 320) else
-				x"FF00FF" when (dir_pixel_row < 480 and dir_pixel_column > 321 and dir_pixel_column <= 400) else
-				x"0000FF" when (dir_pixel_row < 480 and dir_pixel_column > 401 and dir_pixel_column <= 480) else
-				x"FF0000" when (dir_pixel_row < 480 and dir_pixel_column > 481 and dir_pixel_column <= 560) else
-				x"000000" when (dir_pixel_row < 480 and dir_pixel_column > 560);
-				
-	dir_red <= rgb_s(7 downto 0);
-	dir_green <= rgb_s(15 downto 8);
-	dir_blue <= rgb_s(23 downto 16);
-  
- 
-  -- koristeci signale realizovati logiku koja pise po TXT_MEM
-  --char_address
-  --char_value
-  --char_we
-  
-  char_we <= '1';
-  
-  process(pix_clock_s)begin
-		if(rising_edge(pix_clock_s)) then 
-			if(char_address = 1200) then 
-				char_address <= (others => '0');
-			else 
-				char_address <= char_address + 1;
-			end if;
-		end if;
-  end process;
-  
-  char_value <= "010010" when  char_address = 0 + offset else -- R
-						"010101" when  char_address = 1+ offset else -- U
-						"000100" when  char_address = 2 + offset  else -- D
-						"000001" when  char_address = 3 + offset  else -- A
-						"100000" when  char_address = 4 + offset  else --  
-						"001001" when  char_address = 5 + offset else -- I 
-						"100000" when  char_address = 6 + offset  else --  
-						"001111" when  char_address = 7 + offset else -- O
-						"000011" when  char_address = 8 + offset  else -- C
-						"000001" when  char_address = 9 + offset else --A
-						"100000"; 
-  
-  -- koristeci signale realizovati logiku koja pise po GRAPH_MEM
-  --pixel_address
-  --pixel_value
-  --pixel_we
-  
- process(pix_clock_s)begin
-	 if (rising_edge(pix_clock_s)) then
-		if (sec_cnt = 10000000) then --brojac sekundi 23999999 ako hoce na sekundu
-		  sec_cnt <= (others => '0');
-		else
-			sec_cnt <= sec_cnt + 1;
-		end if;
-	end if;
-	end process;
+-- 
+--	rgb_s <= x"ffffff" when (dir_pixel_row < 480 and dir_pixel_column <= 79) else
+--				x"00FFFF" when (dir_pixel_row < 480 and dir_pixel_column > 80 and dir_pixel_column <= 160) else
+--				x"FFFF00" when (dir_pixel_row < 480 and dir_pixel_column > 161 and dir_pixel_column <= 240) else
+--				x"00FF00" when (dir_pixel_row < 480 and dir_pixel_column > 241 and dir_pixel_column <= 320) else
+--				x"FF00FF" when (dir_pixel_row < 480 and dir_pixel_column > 321 and dir_pixel_column <= 400) else
+--				x"0000FF" when (dir_pixel_row < 480 and dir_pixel_column > 401 and dir_pixel_column <= 480) else
+--				x"FF0000" when (dir_pixel_row < 480 and dir_pixel_column > 481 and dir_pixel_column <= 560) else
+--				x"000000" when (dir_pixel_row < 480 and dir_pixel_column > 560);
+--				
+--	dir_red <= rgb_s(7 downto 0);
+--	dir_green <= rgb_s(15 downto 8);
+--	dir_blue <= rgb_s(23 downto 16);
+--  
+-- 
+--  -- koristeci signale realizovati logiku koja pise po TXT_MEM
+--  --char_address
+--  --char_value
+--  --char_we
+--  
+--  char_we <= '1';
+--  
+--  process(pix_clock_s)begin
+--		if(rising_edge(pix_clock_s)) then 
+--			if(char_address = 1200) then 
+--				char_address <= (others => '0');
+--			else 
+--				char_address <= char_address + 1;
+--			end if;
+--		end if;
+--  end process;
+--  
+--  char_value <= "010010" when  char_address = 0 + offset else -- R
+--						"010101" when  char_address = 1+ offset else -- U
+--						"000100" when  char_address = 2 + offset  else -- D
+--						"000001" when  char_address = 3 + offset  else -- A
+--						"100000" when  char_address = 4 + offset  else --  
+--						"001001" when  char_address = 5 + offset else -- I 
+--						"100000" when  char_address = 6 + offset  else --  
+--						"001111" when  char_address = 7 + offset else -- O
+--						"000011" when  char_address = 8 + offset  else -- C
+--						"000001" when  char_address = 9 + offset else --A
+--						"100000"; 
+--  
+--  -- koristeci signale realizovati logiku koja pise po GRAPH_MEM
+--  --pixel_address
+--  --pixel_value
+--  --pixel_we
+--  
+-- process(pix_clock_s)begin
+--	 if (rising_edge(pix_clock_s)) then
+--		if (sec_cnt = 10000000) then --brojac sekundi 23999999 ako hoce na sekundu
+--		  sec_cnt <= (others => '0');
+--		else
+--			sec_cnt <= sec_cnt + 1;
+--		end if;
+--	end if;
+--	end process;
+--	
+--	
+--	sTC <= '1' when sec_cnt = 10000000 else
+--			'0';
+--	
+--	process(pix_clock_s)begin
+--	 if (rising_edge(pix_clock_s)) then
+--		if (offset = 1200) then
+--		  offset <= (others => '0');
+--		else
+--			if (sTC = '1') then 
+--				offset <= offset + 1; --povecava se za jedan tj.pomera samo kad se izbroji sekunda ili koje vec vreme
+--			end if;
+--		end if;
+--	end if;
+--	end process;
+--
+--
+--	pixel_we <= '1';
+--
+--	process (pix_clock_s) begin
+--	 if (rising_edge(pix_clock_s)) then
+--		if (pixel_address = 9600) then
+--		  pixel_address <= (others => '0');
+--		else
+--			pixel_address <= pixel_address + 1;
+--		end if;
+--	 end if;
+--	end process;
+--	
+--	--A = 4489
+--	--B = 4490
+--	--C = 5129
+--	--D = 5130
+--	
+--	pixel_value <= x"00000000" when (pixel_address + move_cnt < 4489 or pixel_address + move_cnt > 5130) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4490 and pixel_address + move_cnt < 4509) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4510 and pixel_address + move_cnt < 4529) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4530 and pixel_address + move_cnt < 4549) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4550 and pixel_address + move_cnt < 4569) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4570 and pixel_address + move_cnt < 4589) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4590 and pixel_address + move_cnt < 4609) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4610 and pixel_address + move_cnt <  4629) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt> 4630 and pixel_address + move_cnt <  4649) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4650 and pixel_address + move_cnt <  4669) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4670 and pixel_address + move_cnt <  4689) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4690 and pixel_address + move_cnt <  4709) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4710 and pixel_address + move_cnt <  4729) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4730 and pixel_address + move_cnt <  4749) else
+--						
+--						 x"00000000" when (pixel_address + move_cnt > 4750 and pixel_address + move_cnt <  4769) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4770 and pixel_address + move_cnt < 4789) else
+--						  
+--						 x"00000000" when (pixel_address + move_cnt > 4790 and pixel_address + move_cnt < 4809) else
+--						  
+--						 x"00000000" when (pixel_address + move_cnt > 4810 and pixel_address + move_cnt < 4829) else
+--						  
+--						 x"00000000" when (pixel_address + move_cnt > 4830 and pixel_address + move_cnt < 4849) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4850 and pixel_address + move_cnt < 4869) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4870 and pixel_address + move_cnt < 4889) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4890 and pixel_address + move_cnt < 4909) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4910 and pixel_address + move_cnt <4929) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4930 and pixel_address + move_cnt < 4949) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4950 and pixel_address + move_cnt < 4969) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4970 and pixel_address + move_cnt < 4989) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 4990 and pixel_address + move_cnt < 5009) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5010 and pixel_address + move_cnt < 5029) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5030 and pixel_address + move_cnt < 5049) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5050 and pixel_address + move_cnt < 5069) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5070 and pixel_address + move_cnt < 5089) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5090 and pixel_address + move_cnt < 5109) else
+--						 
+--						 x"00000000" when (pixel_address + move_cnt > 5110 and pixel_address + move_cnt < 5129) else
+--						 
+--						x"ffffffff";
+--
+--
+--
+--	process(pix_clock_s)begin
+--	 if (rising_edge(pix_clock_s)) then
+--		if (move_cnt = 20) then
+-- 	  move_cnt <= (others => '0');
+--		else
+--			if (sTC = '1') then 
+--				move_cnt <= move_cnt + 1; --povecava se za jedan tj.pomera samo kad se izbroji sekunda ili koje vec vreme
+--			end if;
+--		end if;
+--	end if;
+--	end process;  
 	
 	
-	sTC <= '1' when sec_cnt = 10000000 else
-			'0';
 	
-	process(pix_clock_s)begin
-	 if (rising_edge(pix_clock_s)) then
-		if (offset = 1200) then
-		  offset <= (others => '0');
-		else
-			if (sTC = '1') then 
-				offset <= offset + 1; --povecava se za jedan tj.pomera samo kad se izbroji sekunda ili koje vec vreme
-			end if;
-		end if;
-	end if;
-	end process;
-
-
-	pixel_we <= '1';
-
-	process (pix_clock_s) begin
-	 if (rising_edge(pix_clock_s)) then
-		if (pixel_address = 9600) then
-		  pixel_address <= (others => '0');
-		else
-			pixel_address <= pixel_address + 1;
-		end if;
-	 end if;
-	end process;
+	unit_id <= Bus2IP_Addr(25 downto 24);
+	unit_addr <= Bus2IP_Addr(23 downto 2);
 	
-	--A = 4489
-	--B = 4490
-	--C = 5129
-	--D = 5130
+	global_we <= not(Bus2IP_RNW) and Bus2IP_CS;
 	
-	pixel_value <= x"00000000" when (pixel_address + move_cnt < 4489 or pixel_address + move_cnt > 5130) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4490 and pixel_address + move_cnt < 4509) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4510 and pixel_address + move_cnt < 4529) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4530 and pixel_address + move_cnt < 4549) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4550 and pixel_address + move_cnt < 4569) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4570 and pixel_address + move_cnt < 4589) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4590 and pixel_address + move_cnt < 4609) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4610 and pixel_address + move_cnt <  4629) else
-						 
-						 x"00000000" when (pixel_address + move_cnt> 4630 and pixel_address + move_cnt <  4649) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4650 and pixel_address + move_cnt <  4669) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4670 and pixel_address + move_cnt <  4689) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4690 and pixel_address + move_cnt <  4709) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4710 and pixel_address + move_cnt <  4729) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4730 and pixel_address + move_cnt <  4749) else
-						
-						 x"00000000" when (pixel_address + move_cnt > 4750 and pixel_address + move_cnt <  4769) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4770 and pixel_address + move_cnt < 4789) else
-						  
-						 x"00000000" when (pixel_address + move_cnt > 4790 and pixel_address + move_cnt < 4809) else
-						  
-						 x"00000000" when (pixel_address + move_cnt > 4810 and pixel_address + move_cnt < 4829) else
-						  
-						 x"00000000" when (pixel_address + move_cnt > 4830 and pixel_address + move_cnt < 4849) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4850 and pixel_address + move_cnt < 4869) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4870 and pixel_address + move_cnt < 4889) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4890 and pixel_address + move_cnt < 4909) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4910 and pixel_address + move_cnt <4929) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4930 and pixel_address + move_cnt < 4949) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4950 and pixel_address + move_cnt < 4969) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4970 and pixel_address + move_cnt < 4989) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 4990 and pixel_address + move_cnt < 5009) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5010 and pixel_address + move_cnt < 5029) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5030 and pixel_address + move_cnt < 5049) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5050 and pixel_address + move_cnt < 5069) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5070 and pixel_address + move_cnt < 5089) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5090 and pixel_address + move_cnt < 5109) else
-						 
-						 x"00000000" when (pixel_address + move_cnt > 5110 and pixel_address + move_cnt < 5129) else
-						 
-						x"ffffffff";
-
-
-
-	process(pix_clock_s)begin
-	 if (rising_edge(pix_clock_s)) then
-		if (move_cnt = 20) then
- 	  move_cnt <= (others => '0');
-		else
-			if (sTC = '1') then 
-				move_cnt <= move_cnt + 1; --povecava se za jedan tj.pomera samo kad se izbroji sekunda ili koje vec vreme
-			end if;
-		end if;
-	end if;
-	end process;  
   
   
   ------------------------------------------

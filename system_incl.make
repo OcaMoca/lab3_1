@@ -131,7 +131,11 @@ pcores/vga_peripheral_v1_00_a/hdl/vhdl/graphics_mem.vhd \
 pcores/vga_peripheral_v1_00_a/hdl/vhdl/text_mem.vhd \
 pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga.vhd \
 pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_sync.vhd \
-pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/vga_top.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/dcm25MHz.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/dcm50MHz.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/dcm75MHz.vhd \
+pcores/vga_peripheral_v1_00_a/hdl/vhdl/dcm108MHz.vhd
 
 WRAPPER_NGC_FILES = implementation/system_proc_sys_reset_0_wrapper.ngc \
 implementation/system_microblaze_0_ilmb_wrapper.ngc \

@@ -168,6 +168,11 @@
 #define XPAR_MY_PERIPHERAL_0_HIGHADDR 0x7DE0FFFF
 
 
+/* Definitions for peripheral VGA_PERIPHERAL_0 */
+#define XPAR_VGA_PERIPHERAL_0_BASEADDR 0x7FC00000
+#define XPAR_VGA_PERIPHERAL_0_HIGHADDR 0x7FC0FFFF
+
+
 /******************************************************************/
 
 /* Definitions for bus frequencies */

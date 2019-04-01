@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="D:\ra164-2016\lab3_1\SDK\SDK_Workspace\lab3_1_hw_platform\system.bit" key="lab3_1_hw_platform-bitFile"/>
+	<item value="D:\ra164-2016\lab3_1\SDK\SDK_Export\hw\system.bit" key="lab3_1_hw_platform-bitFile"/>
 	<item value="bootloop" key="lab3_1_hw_platform-microblaze_0-initElf"/>
 	<item value="D:\ra164-2016\lab3_1\SDK\SDK_Workspace\lab3_1_hw_platform\system_bd.bmm" key="lab3_1_hw_platform-bmmFile"/>
 </section>

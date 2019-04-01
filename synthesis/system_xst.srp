@@ -1089,19 +1089,21 @@ Primitive and Black Box Usage:
 #      SRL16                       : 2
 #      SRL16E                      : 34
 #      SRLC16E                     : 105
-# Clock Buffers                    : 4
-#      BUFG                        : 4
+# Clock Buffers                    : 5
+#      BUFG                        : 5
 # IO Buffers                       : 55
-#      IBUF                        : 15
+#      IBUF                        : 14
+#      IBUFG                       : 1
 #      IBUFGDS                     : 1
 #      OBUF                        : 39
+# DCMs                             : 1
+#      DCM_SP                      : 1
 # DSPs                             : 5
 #      DSP48A1                     : 5
-# Others                           : 5
+# Others                           : 4
 #      AND2B1L                     : 1
 #      BSCAN_SPARTAN6              : 1
 #      char_rom_def                : 1
-#      dcm25MHz                    : 1
 #      PLL_ADV                     : 1
 
 Device utilization summary:
@@ -1119,20 +1121,20 @@ Slice Logic Utilization:
        Number used as SRL:              141
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:   4055
-   Number with an unused Flip Flop:    1784  out of   4055    43%  
-   Number with an unused LUT:          1321  out of   4055    32%  
-   Number of fully used LUT-FF pairs:   950  out of   4055    23%  
+ Number of LUT Flip Flop pairs used:   4053
+   Number with an unused Flip Flop:    1782  out of   4053    43%  
+   Number with an unused LUT:          1319  out of   4053    32%  
+   Number of fully used LUT-FF pairs:   952  out of   4053    23%  
    Number of unique control sets:       152
 
 IO Utilization: 
  Number of IOs:                          56
- Number of bonded IOBs:                  56  out of    358    15%  
+ Number of bonded IOBs:                  55  out of    358    15%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               20  out of    116    17%  
     Number using Block RAM only:         20
- Number of BUFG/BUFGCTRLs:                4  out of     16    25%  
+ Number of BUFG/BUFGCTRLs:                5  out of     16    31%  
  Number of DSP48A1s:                      5  out of     58     8%  
  Number of PLL_ADVs:                      1  out of      4    25%  
 
@@ -1158,7 +1160,7 @@ Clock Information:
 Clock Signal                                                                                                                                                                                                 | Clock buffer(FF name)                                                                                             | Load  |
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------+-------+
 CLK_P                                                                                                                                                                                                        | PLL_ADV:CLKOUT0                                                                                                   | 2090  |
-vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s                                                                                                                                         | NONE(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/clk5m_inst)                                                   | 108   |
+vga_peripheral_0_clk_i_pin                                                                                                                                                                                   | DCM_SP:CLKFX                                                                                                      | 108   |
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/display_mode_i[1]_display_mode_i[1]_OR_30_o(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/display_mode_i[1]_display_mode_i[1]_OR_30_o1:O)| NONE(*)(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/active_pixel_s)                                  | 1     |
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/dir_pixel_row[10]_dir_pixel_row[10]_OR_37_o(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/dir_pixel_row[10]_dir_pixel_row[10]_OR_37_o:O)                     | NONE(*)(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_7)                                                   | 2     |
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_15_G(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_15_G:O)                                                                                       | NONE(*)(vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_15)                                                  | 1     |
@@ -1181,7 +1183,7 @@ Speed Grade: -2
    Minimum period: 18.715ns (Maximum Frequency: 53.434MHz)
    Minimum input arrival time before clock: 8.502ns
    Maximum output required time after clock: 11.582ns
-   Maximum combinational path delay: 2.945ns
+   Maximum combinational path delay: No path found
 
 Timing Details:
 ---------------
@@ -1216,15 +1218,15 @@ Delay:               9.357ns (Levels of Logic = 7)
                                        (27.0% logic, 73.0% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s'
-  Clock period: 12.781ns (frequency: 78.241MHz)
+Timing constraint: Default period analysis for Clock 'vga_peripheral_0_clk_i_pin'
+  Clock period: 11.834ns (frequency: 84.500MHz)
   Total number of paths / destination ports: 13734 / 349
 -------------------------------------------------------------------------
 Delay:               12.781ns (Levels of Logic = 3)
   Source:            vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/v_count_r_8 (FF)
   Destination:       vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/Mram_text_mem2 (RAM)
-  Source Clock:      vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s rising
-  Destination Clock: vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s rising
+  Source Clock:      vga_peripheral_0_clk_i_pin rising 0.9X
+  Destination Clock: vga_peripheral_0_clk_i_pin rising 0.9X
 
   Data Path: vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/v_count_r_8 to vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/Mram_text_mem2
                                 Gate     Net
@@ -1232,7 +1234,7 @@ Delay:               12.781ns (Levels of Logic = 3)
     ----------------------------------------  ------------
      FDRE:C->Q            19   0.525   1.260  vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/v_count_r_8 (vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/v_count_r<8>)
      DSP48A1:B4->P11       4   7.335   0.912  vga_peripheral_0/USER_LOGIC_I/vga_top_i/Maddsub_n0103 (vga_peripheral_0/USER_LOGIC_I/vga_top_i/txt_rom_addr_c<11>)
-     LUT2:I0->O            9   0.250   1.084  vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/index_t[30]_GND_25_o_LessThan_5_o1_SW1 (N42)
+     LUT2:I0->O            9   0.250   1.084  vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/index_t[30]_GND_30_o_LessThan_5_o1_SW1 (N42)
      LUT6:I4->O            3   0.250   0.765  vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/Mmux_index14 (vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/index<0>)
      RAMB16BWER:ADDRB1         0.400          vga_peripheral_0/USER_LOGIC_I/vga_top_i/text_mem_i/Mram_text_mem2
     ----------------------------------------
@@ -1320,13 +1322,13 @@ Offset:              2.486ns (Levels of Logic = 3)
                                        (66.5% logic, 33.5% route)
 
 =========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s'
-  Total number of paths / destination ports: 5 / 5
+Timing constraint: Default OFFSET IN BEFORE for Clock 'vga_peripheral_0_clk_i_pin'
+  Total number of paths / destination ports: 4 / 4
 -------------------------------------------------------------------------
 Offset:              3.404ns (Levels of Logic = 3)
   Source:            vga_peripheral_0_reset_n_i_pin (PAD)
   Destination:       vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/locked_del_reg_r (FF)
-  Destination Clock: vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s rising
+  Destination Clock: vga_peripheral_0_clk_i_pin rising 0.9X
 
   Data Path: vga_peripheral_0_reset_n_i_pin to vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/locked_del_reg_r
                                 Gate     Net
@@ -1446,13 +1448,13 @@ Offset:              5.415ns (Levels of Logic = 7)
                                        (23.8% logic, 76.2% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s'
+Timing constraint: Default OFFSET OUT AFTER for Clock 'vga_peripheral_0_clk_i_pin'
   Total number of paths / destination ports: 38 / 38
 -------------------------------------------------------------------------
 Offset:              4.380ns (Levels of Logic = 2)
   Source:            vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/red_r_0 (FF)
   Destination:       vga_peripheral_0_red_o_pin<7> (PAD)
-  Source Clock:      vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s rising
+  Source Clock:      vga_peripheral_0_clk_i_pin rising 0.9X
 
   Data Path: vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/vga_sync_i/red_r_0 to vga_peripheral_0_red_o_pin<7>
                                 Gate     Net
@@ -1524,26 +1526,6 @@ Offset:              11.582ns (Levels of Logic = 9)
                                        (21.9% logic, 78.1% route)
 
 =========================================================================
-Timing constraint: Default path analysis
-  Total number of paths / destination ports: 3 / 3
--------------------------------------------------------------------------
-Delay:               2.945ns (Levels of Logic = 3)
-  Source:            vga_peripheral_0_reset_n_i_pin (PAD)
-  Destination:       vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/res_1.dcm25_i:RESET (PAD)
-
-  Data Path: vga_peripheral_0_reset_n_i_pin to vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/res_1.dcm25_i:RESET
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             1   1.328   0.681  vga_peripheral_0_reset_n_i_pin_IBUF (vga_peripheral_0_reset_n_i_pin_IBUF)
-     begin scope: 'vga_peripheral_0:reset_n_i'
-     INV:I->O              1   0.255   0.681  vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/rst_n_i_inv1_INV_0 (vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/rst_n_i_inv)
-    dcm25MHz:RESET             0.000          vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/res_1.dcm25_i
-    ----------------------------------------
-    Total                      2.945ns (1.583ns logic, 1.362ns route)
-                                       (53.8% logic, 46.2% route)
-
-=========================================================================
 
 Cross Clock Domains Report:
 --------------------------
@@ -1579,30 +1561,30 @@ debug_module/debug_module/drck_i|    2.860|    4.093|    3.740|         |
 --------------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/dir_pixel_row[10]_dir_pixel_row[10]_OR_37_o
---------------------------------------------------------------------+---------+---------+---------+---------+
-                                                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock                                                        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------------------------------------------------+---------+---------+---------+---------+
-vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s|         |         |    8.795|         |
---------------------------------------------------------------------+---------+---------+---------+---------+
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+vga_peripheral_0_clk_i_pin|         |         |    8.795|         |
+--------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_15_G
---------------------------------------------------------------------+---------+---------+---------+---------+
-                                                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock                                                        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------------------------------------------------+---------+---------+---------+---------+
-vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s|         |         |   10.156|         |
---------------------------------------------------------------------+---------+---------+---------+---------+
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+vga_peripheral_0_clk_i_pin|         |         |   10.156|         |
+--------------------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/display_mode_i[1]_display_mode_i[1]_OR_30_o
---------------------------------------------------------------------+---------+---------+---------+---------+
-                                                                    | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock                                                        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
---------------------------------------------------------------------+---------+---------+---------+---------+
-vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s|         |         |    3.429|         |
---------------------------------------------------------------------+---------+---------+---------+---------+
+--------------------------+---------+---------+---------+---------+
+                          | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock              |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+--------------------------+---------+---------+---------+---------+
+vga_peripheral_0_clk_i_pin|         |         |    3.429|         |
+--------------------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s
+Clock to Setup on destination clock vga_peripheral_0_clk_i_pin
 ----------------------------------------------------------------------------------------------------+---------+---------+---------+---------+
                                                                                                     | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock                                                                                        |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
@@ -1610,18 +1592,18 @@ Source Clock                                                                    
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/dir_pixel_row[10]_dir_pixel_row[10]_OR_37_o          |         |    1.800|         |         |
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/rgb_s_15_G                                           |         |    1.800|         |         |
 vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/display_mode_i[1]_display_mode_i[1]_OR_30_o|         |    1.779|         |         |
-vga_peripheral_0/vga_peripheral_0/USER_LOGIC_I/vga_top_i/vga_i/clk_s                                |   12.781|         |         |         |
+vga_peripheral_0_clk_i_pin                                                                          |   12.781|         |         |         |
 ----------------------------------------------------------------------------------------------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 11.15 secs
+Total CPU time to Xst completion: 11.33 secs
  
 --> 
 
-Total memory usage is 310384 kilobytes
+Total memory usage is 310064 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    5 (   0 filtered)

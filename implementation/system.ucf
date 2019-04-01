@@ -7,12 +7,12 @@
 
 NET CLK_N LOC = AF14 | IOSTANDARD = LVDS_33;
 NET CLK_P LOC = AD14 | IOSTANDARD = LVDS_33;
-NET RESET LOC = AE24 | IOSTANDARD = LVCMOS33;
+#NET RESET LOC = AE24 | IOSTANDARD = LVCMOS33;
 NET RS232_Uart_1_sin LOC = A21 | IOSTANDARD = LVTTL;
 NET RS232_Uart_1_sout LOC = A20 | IOSTANDARD = LVTTL;
-NET DIP_Switches_TRI_I(0) LOC = W19 | IOSTANDARD = LVTTL;
-NET DIP_Switches_TRI_I(1) LOC = Y24 | IOSTANDARD = LVTTL;
-NET DIP_Switches_TRI_I(2) LOC = K19 | IOSTANDARD = LVTTL;
+NET DIP_Switches_TRI_I(0) LOC = AC24 | IOSTANDARD = LVTTL;
+NET DIP_Switches_TRI_I(1) LOC = AA24 | IOSTANDARD = LVTTL;
+NET DIP_Switches_TRI_I(2) LOC = AB24 | IOSTANDARD = LVTTL;
 NET DIP_Switches_TRI_I(3) LOC = V24 | IOSTANDARD = LVTTL;
 NET DIP_Switches_TRI_I(4) LOC = U20 | IOSTANDARD = LVTTL;
 NET DIP_Switches_TRI_I(5) LOC = U23 | IOSTANDARD = LVTTL;
@@ -35,9 +35,9 @@ TIMESPEC TS_sys_clk_pin = PERIOD sys_clk_pin 50000 kHz;
 NET vga_peripheral_0_clk_i_pin LOC = M21 | IOSTANDARD = LVTTL;
 NET vga_peripheral_0_reset_n_i_pin LOC = AE24 | IOSTANDARD = LVCMOS33;
 
-NET vga_peripheral_0_direct_mode_i_pin LOC = AC24;
-NET vga_peripheral_0_display_mode_i_pin(0) LOC = LOC = AA24;
-NET vga_peripheral_0_display_mode_i_pin(1) LOC = LOC = AB24;
+NET vga_peripheral_0_direct_mode_i_pin LOC = W19;
+NET vga_peripheral_0_display_mode_i_pin(0) LOC = Y24;
+NET vga_peripheral_0_display_mode_i_pin(1) LOC = K19;
 
 NET vga_peripheral_0_vga_hsync_o_pin LOC = B22 | IOSTANDARD = LVTTL;
 NET vga_peripheral_0_vga_vsync_o_pin LOC = A22 | IOSTANDARD = LVTTL;
